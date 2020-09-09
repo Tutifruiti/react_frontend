@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// This is the starting point of the react app
+// Load the App.js main component at the root
 ReactDOM.render(
   <React.StrictMode>
     <App />
