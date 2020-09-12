@@ -1,32 +1,40 @@
 import React from 'react';
 
-import Content1 from '../Page/Content1'
-import Content2 from '../Page/Content2'
+import HomeIcon from '@material-ui/icons/Home';
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
+import InfoIcon from '@material-ui/icons/Info';
+
+import Home from '../Pages/Home'
+import Contact from '../Pages/Contact'
+import About from '../Pages/About'
 
 // Declare all routes with attribute
 // Routes are composed of:
-// path
-// name
-// comp
-// icon
-// exact boolean
+// path : lien url
+// name : le nom
+// render : la page à render
+// icon : l'icon associé
+// exact boolean : un suivis exacte de l'url
 const routes = [
     {
         path: "/",
         name: "home",
-        render: () => <Content1 />,
+        render: () => <Home />,
+        icon: () => <HomeIcon/>,
         exact: true,
     },
     {
-      path: "/inbox",
-      name: "inbox",
-      render: () => <Content2 />,
+      path: "/contact",
+      name: "contact",
+      render: () => <Contact />,
+      icon: () => <ContactSupportIcon/>,
       exact: true,
     },
     {
       path: "/about",
       name: "about",
-      render: () => <Content2 />,
+      render: () => <About />,
+      icon: () => <InfoIcon />,
       exact: true,
     }
 ]

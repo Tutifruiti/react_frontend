@@ -69,6 +69,7 @@ export default function MiniDrawer() {
 
   return (
     <div className={classes.root}>
+      <Router>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -88,10 +89,24 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
+          <Switch>
+          <h2>
+            {Routes.map((route, index) => (
+              
+                <Route 
+                  key = {index}
+                  path = {route.path}
+                  exact = {route.exact}
+                  children = {route.name}
+                  />
+              
+              ))}
+            </h2>
+          </Switch>
         </Toolbar>
       </AppBar>
 
-      <Router>
+      
       <Drawer open={open} handleDrawerClose = {handleDrawerClose}/>
 
       <main className={classes.content}>
@@ -99,7 +114,6 @@ export default function MiniDrawer() {
         {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
-            <>
             {Routes.map((route, index) => (
                 <Route 
                   key = {index}
@@ -108,7 +122,6 @@ export default function MiniDrawer() {
                   children = {<route.render/>}
                   />
               ))}
-              </>
           </Switch>
       </main>
 
