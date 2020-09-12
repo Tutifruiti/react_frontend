@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-import Container from '@material-ui/core/container'
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,7 +13,7 @@ import {
 } from "react-router-dom";
 
 import Drawer from './Drawer'
-import Routes from '../content_components/Routes'
+import Routes from './Routes'
 
 const drawerWidth = 240;
 
@@ -59,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MiniDrawer() {
   const classes = useStyles();
-  const [page, setPage] = React.useState();
   const [open, setOpen] = React.useState(false);
   
   const handleDrawerOpen = () => {

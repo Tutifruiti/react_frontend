@@ -6,8 +6,20 @@ import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
 
-import DrawerContent from '../content_components/DrawerContent'
+import {
+  Link
+} from "react-router-dom";
+
+
+import Routes from './Routes'
+
 
 const drawerWidth = 240;
 
@@ -61,7 +73,14 @@ export default function CustomDrawer({open, handleDrawerClose}){
         </IconButton>
       </div>
       <Divider />
-      <DrawerContent />
+      <List>
+          {Routes.map((route, index) => (
+            <ListItem button key={route.index} component={Link} to={route.path}>
+                <ListItemIcon>{route.index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={route.name} />
+            </ListItem>
+          ))}
+        </List>
     </Drawer>
     );
 }
