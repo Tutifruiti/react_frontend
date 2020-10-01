@@ -1,14 +1,28 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import 'fontsource-roboto';
 
-import AppBar from './components/base_components/AppBar'
-
-
+import Routes from "./components/Routes";
 
 function App() {
   return (
-    <header>
-      <AppBar/>
-    </header>
+    <>
+      {
+        // switch to the corresponding page
+      }
+      <Router>
+        <Switch>
+          {Routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              children={<route.render />}
+            />
+          ))}
+        </Switch>
+      </Router>
+    </>
   );
 }
 
