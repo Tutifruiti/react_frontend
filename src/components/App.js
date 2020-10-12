@@ -5,7 +5,7 @@ import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./Layout";
 
 // pages
-import Error from "../pages/error";
+import Error from "../pages/error/Error";
 
 // context
 import { useUserState } from "../context/UserContext";
