@@ -17,6 +17,7 @@ import Routes from "../Routes/Routes"
 
 // context
 import { useLayoutState } from "../../context/LayoutContext";
+import StickyFooter from "../Footer/Footer";
 
 function Layout(props) {
   var classes = useStyles();
@@ -40,6 +41,7 @@ function Layout(props) {
                 <Route path={link.link} component={link.component}/>
               ))}
             </Switch>
+            <StickyFooter />
           </div>
         </>
     </div>

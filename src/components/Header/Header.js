@@ -58,7 +58,7 @@ export default function Header() {
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          React Material Admin
+          MAXIME JAQUIER
         </Typography>
         <div className={classes.grow} />
       </Toolbar>
