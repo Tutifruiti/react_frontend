@@ -1,15 +1,10 @@
-import react from "react"
 import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles((theme) => ({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '100vh',
-    },
-    main: {
-      marginTop: theme.spacing(8),
-      marginBottom: theme.spacing(2),
+      minHeight: '80vh',
     },
     footer: {
       padding: theme.spacing(3, 2),

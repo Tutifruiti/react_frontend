@@ -25,7 +25,7 @@ export default function StickyFooter() {
     return (
       <div className={classes.root}>
         <footer className={classes.footer}>
-          <Container maxWidth="sm">
+          <Container maxWidth="sm" align="center">
             <Typography variant="body1">Build on top of React - Material-UI</Typography>
             <Copyright />
           </Container>

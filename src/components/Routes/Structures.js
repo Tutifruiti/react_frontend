@@ -17,22 +17,27 @@ import Backtest from "../../pages/backtest"
 // component
 // icon
 // route
-const Routes = [
-  {
-    id: 0,
-    link: "/app/overview",
-    component: Overview,
-  },
-  {
-    id: 1,
-    link: "/app/stocks",
-    component: Stocks,
-  },
+const Structures = [
+  { id: 0, type: "title", label: "MENU"},
+  { id: 1, type: "divider"},
   {
     id: 2,
+    label: "Overview",
+    link: "/app/overview",
+    icon: <HomeIcon />,
+  },
+  {
+    id: 3,
+    label: "Stocks",
+    link: "/app/stocks",
+    icon: <HomeIcon />,
+  },
+  {
+    id: 4,
+    label: "Backtest",
     link: "/app/backtest",
-    component: Backtest,
+    icon: <HomeIcon />,
   },
 ];
 
-export default Routes;
+export default Structures;

@@ -12,7 +12,7 @@ import useStyles from "./styles";
 
 // components
 import SidebarLink from "./components/SidebarLink";
-import Routes from "../Routes/Routes"
+import Structures from "../Routes/Structures"
 
 // context
 import {
@@ -66,7 +66,7 @@ function Sidebar({ location }) {
         </IconButton>
       </div>
       <List className={classes.sidebarList}>
-        {Routes.map(link => (
+        {Structures.map(link => (
           <SidebarLink
             key={link.id}
             location={location}
