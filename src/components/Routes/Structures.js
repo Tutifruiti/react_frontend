@@ -4,19 +4,13 @@ import {
   Home as HomeIcon,
 } from "@material-ui/icons";
 
-// Pages
-import Overview from "../../pages/overview";
-import Stocks from "../../pages/stocks";
-import Backtest from "../../pages/backtest"
-
-// Declare all routes with attribute
-// Routes are composed of:
+// Declare all structures with attribute
+// Strctures are composed of:
 // id
+// type
 // label
 // link
-// component
 // icon
-// route
 const Structures = [
   { id: 0, type: "title", label: "MENU"},
   { id: 1, type: "divider"},
