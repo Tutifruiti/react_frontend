@@ -2,12 +2,14 @@
   "name": "react_frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tutifruiti.github.io/react_frontend/",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "classnames": "^2.2.6",
     "fontsource-roboto": "^3.0.3",
-    "react": "^16.13.1",
+    "gh-pages": "^3.1.0",
+    "react": "^17.0.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
@@ -17,6 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
