@@ -1,20 +1,34 @@
 import React from "react";
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import className from "classnames";
 
+//components
 import Stocks from './components/stocks'
+import AddForm from './components/addForm'
+
+// styles
+import useStyles from "./styles";
+
+// context
+import {usePortfolioState} from "../../context/PortfolioContext"
+
 
 export default function Overview() {
+  var classes = useStyles();
+  var portfolioState = usePortfolioState();
+
   return(
-  <div>
+    <>
+  <div className={classes.root}>
     <Grid container spacing={3}>
-      <Grid item xs={12} sm={6}>
-        <Stocks/>
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Stocks/>
-      </Grid>
+      {portfolioState.map((stock) => (
+        <Grid item xs={12} sm = {4}>
+          <Stocks ticker={stock.ticker} id={stock.id}/>
+        </Grid>
+      ))}
     </Grid>
   </div>
+  <AddForm/>
+  </>
   )
 }

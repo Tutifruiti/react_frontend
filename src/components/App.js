@@ -17,11 +17,11 @@ export default function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" render={() => <Redirect to="/app/dashboard" />} />
+        <Route exact path="/" render={() => <Redirect to="/app/overview" />} />
         <Route
           exact
           path="/app"
-          render={() => <Redirect to="/app/dashboard" />}
+          render={() => <Redirect to="/app/overview" />}
         />
         <Route path="/app" component={Layout} />
         <Route component={Error} />
