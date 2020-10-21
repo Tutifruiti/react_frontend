@@ -17,6 +17,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route exact path="/react_frontend" render={() => <Redirect to ="/app/overview" />} />
         <Route exact path="/" render={() => <Redirect to="/app/overview" />} />
         <Route
           exact
