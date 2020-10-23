@@ -26,7 +26,7 @@ export default function AlertDialog() {
   const [open, setOpen] = React.useState(false);
 
   const updateTicker = (e) => {
-    setTicker(e.target.value);
+    setTicker(e.target.value.toUpperCase());
   }
 
   const handleClickOpen = () => {
