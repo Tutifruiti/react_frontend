@@ -22,7 +22,7 @@ export default function Overview() {
   <div className={classes.root}>
     <Grid container spacing={3}>
       {portfolioState.map((stock) => (
-        <Grid item xs={12} sm = {4}>
+        <Grid key={stock.id} item xs={12} sm = {4}>
           <Stocks ticker={stock.ticker} id={stock.id}/>
         </Grid>
       ))}

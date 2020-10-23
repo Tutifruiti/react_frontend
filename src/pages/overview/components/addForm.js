@@ -12,7 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 import useStyles from "../styles";
 
-import {usePortfolioDispatch, usePortfolioState , addItem} from '../../../context/PortfolioContext'
+import {usePortfolioDispatch, addItem} from '../../../context/PortfolioContext'
 
 export default function AlertDialog() {
 
@@ -40,7 +40,7 @@ export default function AlertDialog() {
   const add = () => {
     setOpen(false);
     addItem(portfolioDispatch, ticker)
-  }
+  };
 
   return (
     <>

@@ -17,6 +17,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+
+import {usePortfolioDispatch, deleteItem} from '../../../context/PortfolioContext'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -29,6 +32,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RecipeReviewCard({ticker, id}) {
   const classes = useStyles();
+  var portfolioDispatch = usePortfolioDispatch();
+
+  const deleteStock = () => {
+    deleteItem(portfolioDispatch, ticker)
+  };
+
   const lastPrice = 12.32;
   const lastChange = 0.36
 
@@ -38,7 +47,7 @@ export default function RecipeReviewCard({ticker, id}) {
         title={ticker}
         subheader={lastPrice}
         action={
-          <IconButton aria-label="delete">
+          <IconButton aria-label="delete" onClick={deleteStock}>
             <DeleteIcon />
           </IconButton>
         }

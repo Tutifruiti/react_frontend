@@ -2,11 +2,9 @@ import React from 'react'
 
 const List = [
     {
-        id: 0,
         ticker: 'SPY'
     },
     {
-        id:1,
         ticker: 'GLD'
     }
 ]
@@ -18,11 +16,15 @@ var PortfolioDispatchContext = React.createContext()
 function portfolioReducer(state, action) {
     switch (action.type) {
       case 'ADD': {
-          console.log(action.ticker)
-        return [...state, {id: state.length, ticker: action.ticker}]
-      }
+        var newList = state.filter(list => list.ticker === action.ticker)
+            if (newList.length === 0){
+              console.log('add')
+              return [...state, {ticker: action.ticker}]
+            }
+            return [...state]
+        }
       case 'DELETE': {
-        return state.filter(list => list.id !== action.id)
+        return state.filter(list => list.ticker !== action.ticker)
       }
       default: {
         throw new Error(`Unhandled action type: ${action.type}`)
@@ -57,12 +59,18 @@ function PortfolioProvider({children}) {
     return context
   }
 
-  export {PortfolioProvider, usePortfolioState, usePortfolioDispatch, addItem}
+  export {PortfolioProvider, usePortfolioState, usePortfolioDispatch, addItem, deleteItem}
 
  // #########################################################
 
  function addItem(dispatch, ticker) {
-    dispatch({
+   dispatch({
       type: "ADD", ticker: ticker
+    });
+  }
+
+  function deleteItem(dispatch, ticker) {
+    dispatch({
+      type: "DELETE", ticker: ticker
     });
   }
