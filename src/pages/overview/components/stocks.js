@@ -18,6 +18,8 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Grid from "@material-ui/core/Grid";
 
+import Plot from "./chart";
+
 import {
   usePortfolioDispatch,
   deleteItem,
@@ -52,7 +54,7 @@ export default function RecipeReviewCard({ ticker, id }) {
   var variance = data["variance"];
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/" + "?ticker=" + ticker, {
+    fetch("https://maximejaquier.pythonanywhere.com/" + "?ticker=" + ticker, {
       method: "get",
       headers: {
         Accept: "application/json",
@@ -96,19 +98,17 @@ export default function RecipeReviewCard({ ticker, id }) {
         }
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Graph to come
-        </Typography>
+        {load ? <Plot price={price} date={date} /> : "loading"}
       </CardContent>
       <CardActions>
         <Typography variant="body2" color="textSecondary" component="p">
-          {load ? <p>daily mean: {mean.toFixed(2)} %</p> : <p>daily mean:</p>}
+          {load ? <>daily mean: {mean.toFixed(2)} %</> : <>daily mean:</>}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           {load ? (
-            <p>daily variance: {mean.toFixed(2)} %</p>
+            <>daily variance: {mean.toFixed(2)} %</>
           ) : (
-            <p>daily variance:</p>
+            <>daily variance:</>
           )}
         </Typography>
       </CardActions>
