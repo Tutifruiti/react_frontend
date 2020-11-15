@@ -78,13 +78,8 @@ export default function RecipeReviewCard({ ticker, id }) {
   return (
     <Card className={classes.root}>
       <CardHeader
-        title={ticker}
-        subheader={load ? price[price.length - 1].toFixed(2) : "loading"}
-        action={
-          <IconButton aria-label="delete" onClick={deleteStock}>
-            <DeleteIcon />
-          </IconButton>
-        }
+        title="Backtest"
+        subheader="performance graph over time"
         avatar={
           load ? (
             lstpctchange > 0 ? (

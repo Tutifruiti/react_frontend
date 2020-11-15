@@ -1,7 +1,8 @@
 // Pages
-import Overview from "../../pages/overview";
-import Stocks from "../../pages/stocks";
+import Overview from "../../pages/overview"
+import Stocks from "../../pages/stocks"
 import Backtest from "../../pages/backtest"
+import CAPM from "../../pages/CAPM"
 
 // Declare all routes with attribute
 // Routes are composed of:

@@ -1,34 +1,42 @@
 import React from "react";
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 import className from "classnames";
 
 //components
-import Stocks from './components/stocks'
-import AddForm from './components/addForm'
+import Stocks from "./components/stocks";
+import AddForm from "./components/addForm";
+import CAPM from "./components/CAPM";
+import Backtest from "./components/backtest";
 
 // styles
 import useStyles from "./styles";
 
 // context
-import {usePortfolioState} from "../../context/PortfolioContext"
-
+import { usePortfolioState } from "../../context/PortfolioContext";
 
 export default function Overview() {
   var classes = useStyles();
   var portfolioState = usePortfolioState();
 
-  return(
+  return (
     <>
-  <div className={classes.root}>
-    <Grid container spacing={3}>
-      {portfolioState.map((stock) => (
-        <Grid key={stock.id} item xs={12} sm = {4}>
-          <Stocks ticker={stock.ticker} id={stock.id}/>
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <CAPM />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Backtest />
+          </Grid>
+
+          {portfolioState.map((stock) => (
+            <Grid key={stock.id} item xs={12} sm={3}>
+              <Stocks ticker={stock.ticker} id={stock.id} />
+            </Grid>
+          ))}
         </Grid>
-      ))}
-    </Grid>
-  </div>
-  <AddForm/>
-  </>
-  )
+      </div>
+      <AddForm />
+    </>
+  );
 }

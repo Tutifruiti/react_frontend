@@ -48,10 +48,6 @@ export default function RecipeReviewCard({ ticker, id }) {
 
   var price = data["price"];
   var date = data["date"];
-  var pctchange = data["pctchange"];
-  var lstpctchange = data["lstpctchange"];
-  var mean = data["mean"];
-  var variance = data["variance"];
 
   useEffect(() => {
     fetch("https://maximejaquier.pythonanywhere.com/" + "?ticker=" + ticker, {
@@ -78,38 +74,14 @@ export default function RecipeReviewCard({ ticker, id }) {
   return (
     <Card className={classes.root}>
       <CardHeader
-        title={ticker}
-        subheader={load ? price[price.length - 1].toFixed(2) : "loading"}
-        action={
-          <IconButton aria-label="delete" onClick={deleteStock}>
-            <DeleteIcon />
-          </IconButton>
-        }
-        avatar={
-          load ? (
-            lstpctchange > 0 ? (
-              <FiberManualRecordIcon style={{ color: green[500] }} />
-            ) : (
-              <FiberManualRecordIcon style={{ color: red[500] }} />
-            )
-          ) : (
-            <FiberManualRecordIcon style={{ color: grey[500] }} />
-          )
-        }
+        title="CAPM"
+        subheader="Capital asset pricing model "
       />
       <CardContent>
         {load ? <Plot price={price} date={date} /> : "loading"}
       </CardContent>
       <CardActions>
         <Typography variant="body2" color="textSecondary" component="p">
-          {load ? <>daily mean: {mean.toFixed(2)} %</> : <>daily mean:</>}
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {load ? (
-            <>daily variance: {mean.toFixed(2)} %</>
-          ) : (
-            <>daily variance:</>
-          )}
         </Typography>
       </CardActions>
     </Card>

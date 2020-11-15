@@ -1,7 +1,10 @@
 import React from "react";
 
 import {
-  Home as HomeIcon,
+  Home,
+  ShowChart,
+  BubbleChart,
+  BarChart
 } from "@material-ui/icons";
 
 // Declare all structures with attribute
@@ -18,19 +21,26 @@ const Structures = [
     id: 2,
     label: "Overview",
     link: "/app/overview",
-    icon: <HomeIcon />,
+    icon: <Home />,
   },
-  {
-    id: 3,
-    label: "Stocks",
-    link: "/app/stocks",
-    icon: <HomeIcon />,
-  },
+  { id: 3, type: "divider"},
   {
     id: 4,
+    label: "Stocks",
+    link: "/app/stocks",
+    icon: <ShowChart />,
+  },
+  {
+    id: 5,
+    label: "CAPM",
+    link: "/app/capm",
+    icon: <BubbleChart />,
+  },
+  {
+    id: 5,
     label: "Backtest",
     link: "/app/backtest",
-    icon: <HomeIcon />,
+    icon: <BarChart />,
   },
 ];
 
