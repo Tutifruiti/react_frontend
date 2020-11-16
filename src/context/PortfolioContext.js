@@ -2,11 +2,8 @@ import React from 'react'
 
 const List = [
     {
-        ticker: 'SPY'
+        ticker: 'SPY',
     },
-    {
-        ticker: 'GLD'
-    }
 ]
 
 var PortfolioStateContext = React.createContext()

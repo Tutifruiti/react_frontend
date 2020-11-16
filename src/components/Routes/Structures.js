@@ -37,7 +37,7 @@ const Structures = [
     icon: <BubbleChart />,
   },
   {
-    id: 5,
+    id: 6,
     label: "Backtest",
     link: "/app/backtest",
     icon: <BarChart />,

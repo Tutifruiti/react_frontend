@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import className from "classnames";
 
 //components
 import Stocks from "./components/stocks";
@@ -30,8 +29,8 @@ export default function Overview() {
           </Grid>
 
           {portfolioState.map((stock) => (
-            <Grid key={stock.id} item xs={12} sm={3}>
-              <Stocks ticker={stock.ticker} id={stock.id} />
+            <Grid key={stock.ticker} item xs={12} sm={3}>
+              <Stocks ticker={stock.ticker} />
             </Grid>
           ))}
         </Grid>
