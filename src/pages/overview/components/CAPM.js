@@ -43,7 +43,7 @@ export default function CAPM() {
 
   useEffect(() => {
       setLoad(false)
-      fetch("http://maximejaquier.pythonanywhere.com/CAPM", {
+      fetch("https://maximejaquier.pythonanywhere.com/CAPM", {
         method: "POST",
         headers: {
           Accept: "application/json",

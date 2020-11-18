@@ -48,7 +48,7 @@ export default function Stock({ticker}) {
   useEffect(() => {
     if(ticker !== undefined){
       if(load === false){
-        fetch("http://maximejaquier.pythonanywhere.com/ticker", {
+        fetch("https://maximejaquier.pythonanywhere.com/ticker", {
           method: 'POST',
           headers: {
             Accept: "application/json",
