@@ -10,7 +10,7 @@ import { red, green, grey } from "@material-ui/core/colors";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-import Plot from "./chart";
+import {LinearPlot} from "./chart";
 
 import {
   usePortfolioDispatch,
@@ -48,13 +48,13 @@ export default function Stock({ticker}) {
   useEffect(() => {
     if(ticker !== undefined){
       if(load === false){
-        fetch("https://maximejaquier.pythonanywhere.com/" + "?ticker=" + ticker, {
-          method: "get",
+        fetch("http://maximejaquier.pythonanywhere.com/ticker", {
+          method: 'POST',
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
-          dataType: "jsonp",
+          body: JSON.stringify({ticker: ticker}),
         })
         .then((response) => response.json())
         .then(
@@ -94,7 +94,7 @@ export default function Stock({ticker}) {
         }
       />
       <CardContent>
-        {load ? <Plot price={price} date={date} /> : "loading"}
+        {load ? <LinearPlot price={price} date={date} /> : "loading"}
       </CardContent>
       <CardActions>
         <Typography variant="body2" color="textSecondary" component="p">

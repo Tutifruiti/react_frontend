@@ -5,11 +5,13 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
+import Skeleton from '@material-ui/lab/Skeleton';
 
-import Plot from "./chart";
+import {ScatterPlot} from "./chart";
 
 // context
 import { usePortfolioState } from "../../../context/PortfolioContext";
+import Stock from "./stocks";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,40 +30,42 @@ export default function CAPM() {
   const [data, setData] = useState([]);
   const [load, setLoad] = useState(false);
 
-  var tickers = data["tickers"]
-  var variance = data["variance"];
-  var mean = data["mean"];
+ var plot=data['plot']
+ var name=data['name']
 
   const getApiString = () => {
-    let apiString = ''
+    let stocks = []
     portfolioState.map((stock) => {
-      apiString = apiString + stock.ticker + '&'
+      stocks.push(stock.ticker)
     })
-    return apiString.slice(0, -1)
+    return {'ticker': stocks}
   }
 
   useEffect(() => {
-      fetch("https://maximejaquier.pythonanywhere.com/" + "?CAPM=" + getApiString(), {
-        method: "get",
+      setLoad(false)
+      fetch("http://maximejaquier.pythonanywhere.com/CAPM", {
+        method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        dataType: "jsonp",
+        body: JSON.stringify(getApiString())
       })
         .then((response) => response.json())
         .then(
           (data) => {
             setData(data);
-            setLoad(true);
-            console.log(data);
+            console.log(data)
+            setLoad(true)
           },
           (error) => {
-            setLoad(false);
+            setLoad(false)
           }
         );
-    
-  },);
+  },[portfolioState.length]);
+
+
+  
 
   return (
     <Card className={classes.root}>
@@ -70,7 +74,7 @@ export default function CAPM() {
         subheader="Capital asset pricing model "
       />
       <CardContent>
-        {load ? <Plot price={mean} date={variance} /> : "loading"}
+        {load ? <ScatterPlot plot={plot} name={name} /> :  <Skeleton variant="rect" width={766} height={329} />}
       </CardContent>
       <CardActions>
         <Typography variant="body2" color="textSecondary" component="p">

@@ -9,7 +9,7 @@ import { red, green, grey } from "@material-ui/core/colors";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 
-import Plot from "./chart";
+import {LinearPlot} from "./chart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,7 +75,7 @@ export default function RecipeReviewCard({ ticker, id }) {
         }
       />
       <CardContent>
-        {load ? <Plot price={price} date={date} /> : "loading"}
+        {load ? <LinearPlot price={price} date={date} /> : "loading"}
       </CardContent>
       <CardActions>
         <Typography variant="body2" color="textSecondary" component="p">
