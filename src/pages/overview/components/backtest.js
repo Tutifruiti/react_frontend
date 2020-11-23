@@ -5,15 +5,16 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Typography from "@material-ui/core/Typography";
-import { red, green, grey } from "@material-ui/core/colors";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
+import Skeleton from '@material-ui/lab/Skeleton';
 
+import { LinearPlot } from "./chart";
 
-import {LinearPlot} from "./chart";
+// context
+import { usePortfolioState } from "../../../context/PortfolioContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    
+    height: '100%'
   },
   graph: {
     height: 0,
@@ -21,61 +22,62 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RecipeReviewCard({ ticker, id }) {
+export default function Backtest() {
+  var portfolioState = usePortfolioState();
+
   const classes = useStyles();
   const [data, setData] = useState([]);
   const [load, setLoad] = useState(false);
 
-  var price = data["price"];
+  var value = data["value"];
   var date = data["date"];
-  var pctchange = data["pctchange"];
-  var lstpctchange = data["lstpctchange"];
   var mean = data["mean"];
-  var variance = data["variance"];
+  var variance = data["variance"]
+
+  
+
+  const getApiString = () => {
+    let stocks = [];
+    portfolioState.map((stock) => {
+      stocks.push(stock.ticker);
+    });
+    return { ticker: stocks };
+  };
 
   useEffect(() => {
-    if(ticker !== undefined){
-      fetch("https://maximejaquier.pythonanywhere.com/" + "?ticker=" + ticker, {
-        method: "get",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+    setLoad(false);
+    console.log("backtest");
+    fetch("https://maximejaquier.pythonanywhere.com/backtest", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(getApiString()),
+    })
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          setData(data);
+          setLoad(true);
+          console.log(data);
         },
-        dataType: "jsonp",
-      })
-        .then((response) => response.json())
-        .then(
-          (data) => {
-            setData(data);
-            setLoad(true);
-            console.log(data);
-          },
-          (error) => {
-            setLoad(false);
-          }
-        );
-    }
-  }, []);
+        (error) => {
+          console.log(error)
+          setLoad(false);
+          console.log(data);
+        }
+      );
+  }, [portfolioState.length]);
 
   return (
     <Card className={classes.root}>
       <CardHeader
         title="Backtest"
-        subheader="performance graph over time"
-        avatar={
-          load ? (
-            lstpctchange > 0 ? (
-              <FiberManualRecordIcon style={{ color: green[500] }} />
-            ) : (
-              <FiberManualRecordIcon style={{ color: red[500] }} />
-            )
-          ) : (
-            <FiberManualRecordIcon style={{ color: grey[500] }} />
-          )
-        }
+        subheader="performance graph over time with equal weights"
       />
       <CardContent>
-        {load ? <LinearPlot price={price} date={date} /> : "loading"}
+        {load ? <LinearPlot price={value} date={date} /> : <Skeleton variant="rect" width={766} height={329} />}
       </CardContent>
       <CardActions>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -83,7 +85,7 @@ export default function RecipeReviewCard({ ticker, id }) {
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           {load ? (
-            <>daily variance: {mean.toFixed(2)} %</>
+            <>daily variance: {variance.toFixed(2)} %</>
           ) : (
             <>daily variance:</>
           )}

@@ -11,11 +11,10 @@ import {ScatterPlot} from "./chart";
 
 // context
 import { usePortfolioState } from "../../../context/PortfolioContext";
-import Stock from "./stocks";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    
+    height: '100%'
   },
   graph: {
     height: 0,
@@ -55,7 +54,6 @@ export default function CAPM() {
         .then(
           (data) => {
             setData(data);
-            console.log(data)
             setLoad(true)
           },
           (error) => {
@@ -64,20 +62,18 @@ export default function CAPM() {
         );
   },[portfolioState.length]);
 
-
-  
-
   return (
     <Card className={classes.root}>
       <CardHeader
         title="CAPM"
-        subheader="Capital asset pricing model "
+        subheader="Capital asset pricing model"
       />
       <CardContent>
         {load ? <ScatterPlot plot={plot} name={name} /> :  <Skeleton variant="rect" width={766} height={329} />}
       </CardContent>
       <CardActions>
         <Typography variant="body2" color="textSecondary" component="p">
+          x axis: variance ;  y axis: mean
         </Typography>
       </CardActions>
     </Card>

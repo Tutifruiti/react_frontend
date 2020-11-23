@@ -26,6 +26,11 @@ const Routes = [
     link: "/app/backtest",
     component: Backtest,
   },
+  {
+    id: 3,
+    link: "/app/CAPM",
+    component: CAPM,
+  },
 ];
 
 export default Routes;
