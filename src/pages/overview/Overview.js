@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 
 //components
-import Stocks from "./components/stocks";
+import Stocks from "./components/stock";
 import AddForm from "./components/addForm";
 import CAPM from "./components/CAPM";
 import Backtest from "./components/backtest";

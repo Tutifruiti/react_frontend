@@ -21,7 +21,7 @@ import { useLayoutState } from "../../context/LayoutContext";
 import StickyFooter from "../Footer/Footer";
 
 // Pages
-import Overview from "../../pages/overview/Overview";
+import Overview from "../../pages/overview/overview";
 import Stocks from "../../pages/stocks";
 import Backtest from "../../pages/backtest";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // components
 import Layout from "./Layout";
@@ -15,7 +15,7 @@ export default function App() {
   var { isAuthenticated } = useUserState();
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route exact path="/react_frontend" render={() => <Redirect to ="/app/overview" />} />
         <Route exact path="/" render={() => <Redirect to="/app/overview" />} />
@@ -27,7 +27,7 @@ export default function App() {
         <Route path="/app" component={Layout} />
         <Route component={Error} />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 
   // #######################################################################

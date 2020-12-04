@@ -54,6 +54,7 @@ function Sidebar({ location }) {
         }),
       }}
       open={isSidebarOpened}
+      onClose={() => toggleSidebar(layoutDispatch)}
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>

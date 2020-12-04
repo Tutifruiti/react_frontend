@@ -2,5 +2,5 @@
   "name": "Stocks",
   "version": "1.0.0",
   "private": true,
-  "main": "Stocks.js"
+  "main": "stocks.js"
 }

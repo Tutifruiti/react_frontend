@@ -20,10 +20,13 @@ const LinearOptions = {
     xAxes: [{ display: false }],
     yAxes: [
       {
-        display: false,
+        display: true,
         scaleLabel: {
           display: true,
         },
+        gridLines: {
+          drawOnChartArea: false
+        }
       },
     ],
   },
@@ -89,6 +92,9 @@ const ScatterOptions = {
         type: "linear",
         position: "bottom",
         display: true,
+        gridLines: {
+          drawOnChartArea: false
+        }
       },
     ],
     yAxes: [
@@ -101,6 +107,9 @@ const ScatterOptions = {
         scaleLabel: {
           display: true,
         },
+        gridLines: {
+          drawOnChartArea: false
+        }
       },
     ],
   },

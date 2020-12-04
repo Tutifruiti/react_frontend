@@ -4,7 +4,7 @@ export default makeStyles((theme) => ({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '80vh',
+      minHeight: '12vh',
     },
     footer: {
       padding: theme.spacing(3, 2),
